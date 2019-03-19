@@ -6,21 +6,25 @@ import BookCard from '../presentationals/BookCard';
 
 import AddBook from '../../actions/AddBook';
 import DeleteBook from '../../actions/DeleteBook';
+import EditBook from '../../actions/EditBook';
 
 
 // Provider/Container React Component
 class Books extends React.Component{
 
     dispatchAction (input) {
-        switch (input){
-            case "TRASH":
-                this.props.store.dispatch(DeleteBook());
-                break;
-            case "PLUS":
-                this.props.store.dispatch(AddBook());
-                break
+        switch (input) {
+          case "TRASH":
+            this.props.store.dispatch(DeleteBook());
+            break;
+          case "PLUS":
+            this.props.store.dispatch(AddBook());
+            break;
+          case "PENCIL":
+            this.props.store.dispatch(EditBook());
+            break;
         }
-    }
+      }
     
     componentWillMount(){
         this.props.store.subscribe(this.forceUpdate.bind(this))
